@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO & Primary Meta Tags -->
+  <title>Sanjay G. // Futuristic Developer Portfolio // Computer Science & Engineering</title>
+  <meta name="title" content="Sanjay G. // Futuristic Developer Portfolio // Computer Science & Engineering" />
+  <meta name="description"
+    content="Official developer portfolio of Sanjay G., Computer Science Engineering student & developer from Thiruvananthapuram, Kerala, India. Exploring software, web, game dev, 3D, and AI." />
+  <meta name="keywords"
+    content="Sanjay G, Developer Portfolio, Computer Science, Engineering, Kerala, Thiruvananthapuram, Web Development, Game Dev, 3D, AI, Three.js, Java, Python" />
+  <meta name="author" content="Sanjay G." />
+
+  <!-- Favicon (SVG Holographic Reticle) -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5' fill='%23050b14' stroke='%2300f0ff' stroke-width='4'/%3E%3Ccircle cx='50' cy='50' r='18' fill='none' stroke='%237000ff' stroke-width='3'/%3E%3Ccircle cx='50' cy='50' r='6' fill='%2300f0ff'/%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Space Grotesk, Orbitron, Inter, JetBrains Mono, Righteous (Funky Retro), Press Start 2P -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@500;600;700;800;900&family=Press+Start+2P&family=Righteous&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="loading-active">
+
+  <!-- ====================================================================
+       00. AUDIO ENGINE & SOUND PREFERENCE BARRIER
+       ==================================================================== -->
+  <audio id="audio-hover" preload="none"></audio>
+  <audio id="audio-click" preload="none"></audio>
+  <audio id="audio-boot" preload="none"></audio>
+
+  <!-- ====================================================================
+       01. BOOT-UP / INTRO ANIMATION OVERLAY
+       ==================================================================== -->
+  <div id="intro-overlay" class="intro-overlay" aria-hidden="true">
+    <div class="intro-matrix-scan"></div>
+    <div class="intro-grid-background"></div>
+
+    <div class="intro-content">
+      <div class="intro-hud-ring">
+        <div class="ring-pulse"></div>
+        <div class="ring-core">
+          <span class="core-glyph">SG</span>
+        </div>
+      </div>
+
+      <div class="intro-log-feed" id="intro-terminal-log">
+        <div class="terminal-line">[0.04s] BOOT_SEQUENCE_INITIATED</div>
+        <div class="terminal-line">[0.18s] QUANTUM_RUNTIME // OK</div>
+        <div class="terminal-line">[0.32s] RETRO_AUDIO_CORE // ONLINE</div>
+        <div class="terminal-line highlight">[0.45s] IDENTITY VERIFIED: SANJAY G.</div>
+      </div>
+
+      <div class="intro-status-text">
+        <span class="intro-sub">INITIALIZING PORTFOLIO...</span>
+        <h2 class="intro-title">SYSTEM ONLINE</h2>
+        <span class="intro-tagline">SANJAY.G // CS ENGINEER &amp; CREATIVE DEV</span>
+      </div>
+
+      <div class="intro-progress-bar-container">
+        <div class="intro-progress-bar" id="intro-progress"></div>
+      </div>
+
+      <div class="intro-controls">
+        <button id="start-experience-btn" class="hud-btn hud-btn-cyan" type="button">
+          <span class="btn-text">🚀 START EXPERIENCE [AUDIO ON]</span>
+          <span class="btn-flare"></span>
+        </button>
+        <button id="skip-intro-btn" class="hud-btn hud-btn-outline" type="button">
+          <span class="btn-text">SKIP [ESC]</span>
+          <span class="btn-bracket"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       02. CUSTOM DYNAMIC CURSOR (DESKTOP ONLY)
+       ==================================================================== -->
+  <div id="custom-cursor" class="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring">
+      <div class="ring-tick tick-top"></div>
+      <div class="ring-tick tick-bottom"></div>
+      <div class="ring-tick tick-left"></div>
+      <div class="ring-tick tick-right"></div>
+      <span class="cursor-mode-label" id="cursor-label"></span>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       03. BACKGROUND 3D WEBGL CANVAS & ATMOSPHERIC EFFECTS
+       ==================================================================== -->
+  <canvas id="webgl-canvas" class="webgl-canvas"></canvas>
+  <div class="cyber-vignette"></div>
+  <div class="cyber-grid-floor"></div>
+  <div class="scanline-overlay"></div>
+
+  <!-- Retro Floating Cartoon & Computer Decorations -->
+  <div class="retro-floating-decorations" aria-hidden="true">
+    <span class="floating-deco deco-star-1">✦</span>
+    <span class="floating-deco deco-star-2">★</span>
+    <span class="floating-deco deco-star-3">✦</span>
+    <span class="floating-deco deco-cube-1">❖</span>
+    <span class="floating-deco deco-star-4">★</span>
+  </div>
+
+  <!-- ====================================================================
+       04. FLOATING HUD NAVIGATION BAR
+       ==================================================================== -->
+  <header class="hud-navbar" id="hud-navbar">
+    <div class="nav-container">
+
+      <!-- Brand & Identity Beacon -->
+      <a href="#home" class="nav-brand" id="nav-brand" aria-label="Sanjay G. Home">
+        <div class="brand-reticle">
+          <span class="brand-core-dot"></span>
+        </div>
+        <div class="brand-meta">
+          <span class="brand-title">SANJAY G.<span class="brand-accent">_</span></span>
+          <span class="brand-sub">B.TECH CSE · S3 · TVM</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav with React Bits GooeyNav -->
+      <div class="gooey-nav-container" id="gooey-nav-container" aria-label="Main Navigation">
+        <nav>
+          <ul id="gooey-nav-list">
+            <li class="active" data-nav="home">
+              <a href="#home">HOME</a>
+            </li>
+            <li data-nav="about">
+              <a href="#about">ABOUT</a>
+            </li>
+            <li data-nav="skills">
+              <a href="#skills">SKILLS</a>
+            </li>
+            <li data-nav="projects">
+              <a href="#projects">PROJECTS</a>
+            </li>
+            <li data-nav="contact">
+              <a href="#contact">CONTACT</a>
+            </li>
+            <li data-nav="bonus-game" class="nav-bonus-item">
+              <a href="#bonus-game">🕹️ ARCADE</a>
+            </li>
+          </ul>
+        </nav>
+        <span class="effect filter" id="gooey-filter"></span>
+        <span class="effect text" id="gooey-text"></span>
+      </div>
+
+      <!-- HUD Action Controls: Music, SFX & Volume -->
+      <div class="nav-actions">
+        <!-- Background Music Toggle -->
+        <button id="music-toggle-btn" class="hud-audio-btn" type="button" aria-label="Toggle Background Music"
+          title="Toggle Retro Chiptune Music">
+          <span class="audio-btn-icon" id="music-icon">🎵</span>
+          <span class="audio-status-label" id="music-status-text">MUSIC: OFF</span>
+        </button>
+
+        <!-- Sound Effects Toggle -->
+        <button id="sound-toggle-btn" class="hud-audio-btn" type="button" aria-label="Toggle Sound Effects"
+          title="Toggle Retro Arcade Sound Effects">
+          <div class="sound-wave-bars">
+            <span class="bar bar-1"></span>
+            <span class="bar bar-2"></span>
+            <span class="bar bar-3"></span>
+            <span class="bar bar-4"></span>
+          </div>
+          <span class="audio-status-label" id="sound-status-text">SFX: OFF</span>
+        </button>
+
+        <!-- Volume Master Popover Control -->
+        <div class="volume-control-wrapper">
+          <button id="volume-panel-btn" class="hud-vol-btn" type="button" aria-label="Audio Volume Settings"
+            title="Adjust Audio Volume">
+            <span class="vol-icon">🔊</span>
+          </button>
+          <div id="volume-flyout" class="volume-flyout" aria-hidden="true">
+            <div class="volume-flyout-header">AUDIO MIXER</div>
+            <div class="volume-slider-row">
+              <label for="music-volume-slider">🎵 MUSIC</label>
+              <input type="range" id="music-volume-slider" min="0" max="100" value="25" />
+              <span class="vol-val-text" id="music-vol-val">25%</span>
+            </div>
+            <div class="volume-slider-row">
+              <label for="sfx-volume-slider">🔊 SFX</label>
+              <input type="range" id="sfx-volume-slider" min="0" max="100" value="50" />
+              <span class="vol-val-text" id="sfx-vol-val">50%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Connect CTA -->
+        <a href="#contact" class="hud-btn hud-btn-sm hud-btn-cyan nav-cta-btn">
+          <span class="btn-text">CONNECT</span>
+          <span class="btn-flare"></span>
+        </a>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button id="mobile-menu-btn" class="mobile-toggle-btn" type="button" aria-label="Open Navigation Menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-line" id="scroll-progress"></div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-inner">
+      <div class="mobile-drawer-header">
+        <span class="mobile-drawer-title">SYSTEM NAVIGATION</span>
+        <button id="mobile-close-btn" class="mobile-close-btn" type="button"
+          aria-label="Close Navigation Menu">✕</button>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="#home" class="mobile-nav-link" data-nav="home">
+          <span class="m-idx">01 //</span> HOME
+        </a>
+        <a href="#about" class="mobile-nav-link" data-nav="about">
+          <span class="m-idx">02 //</span> ABOUT
+        </a>
+        <a href="#skills" class="mobile-nav-link" data-nav="skills">
+          <span class="m-idx">03 //</span> SKILLS
+        </a>
+        <a href="#projects" class="mobile-nav-link" data-nav="projects">
+          <span class="m-idx">04 //</span> PROJECTS
+        </a>
+        <a href="#contact" class="mobile-nav-link" data-nav="contact">
+          <span class="m-idx">05 //</span> CONTACT
+        </a>
+        <a href="#bonus-game" class="mobile-nav-link" data-nav="bonus-game">
+          <span class="m-idx">06 //</span> 🕹️ ARCADE
+        </a>
+      </nav>
+      <div class="mobile-drawer-footer">
+        <div class="drawer-status-chip">
+          <span class="status-dot"></span>
+          <span>SYSTEM READY · S3 CSE · ARCADE ACTIVE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MAIN APPLICATION CONTAINER
+       ==================================================================== -->
+  <main id="app-container" class="app-main">
+
+    <!-- ==================================================================
+         SECTION 1: HOME // HERO SECTION
+         ================================================================== -->
+    <section id="home" class="hero-section section-block">
+      <div class="container hero-container">
+
+        <!-- Left / Center: Cinematic Typography & Core Intro -->
+        <div class="hero-content">
+
+          <!-- System Status Telemetry Badge -->
+          <div class="hero-status-row">
+            <div class="telemetry-badge">
+              <span class="beacon-pulse"></span>
+              <span class="badge-text">STATUS: ACTIVE & EXPLORING</span>
+            </div>
+            <div class="academic-chip">
+              <span class="chip-bracket">[</span>
+              <span class="chip-content">B.TECH CSE · SEMESTER S3</span>
+              <span class="chip-bracket">]</span>
+            </div>
+          </div>
+
+          <!-- Hero Greeting & Name -->
+          <div class="hero-headings">
+            <p class="hero-greeting">// Hello, I'm</p>
+            <h1 class="hero-name" data-text="Sanjay G.">
+              Sanjay G<span class="text-neon-cyan">.</span>
+            </h1>
+            <h2 class="hero-subtitle">
+              Computer Science Engineering Student &amp; Developer
+            </h2>
+          </div>
+
+          <!-- Intro Paragraph -->
+          <p class="hero-bio">
+            Passionate about software development, web technologies, game development, 3D, AI and creating interactive
+            digital experiences.
+          </p>
+
+          <!-- Location & College Badges -->
+          <div class="hero-meta-badges">
+            <div class="meta-badge location-badge" title="Geographic Coordinates: 8.5241° N, 76.9366° E">
+              <svg class="meta-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>Thiruvananthapuram, Kerala, India</span>
+            </div>
+
+            <div class="meta-badge college-badge">
+              <svg class="meta-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+              <span>ACE College of Engineering</span>
+            </div>
+          </div>
+
+          <!-- Hero Call-To-Action Buttons -->
+          <div class="hero-cta-group">
+            <a href="#projects" class="hud-btn hud-btn-cyan hero-btn" id="hero-btn-projects">
+              <span class="btn-text">EXPLORE MY WORK</span>
+              <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <polyline points="7 13 12 18 17 13"></polyline>
+                <polyline points="7 6 12 11 17 6"></polyline>
+              </svg>
+              <span class="btn-flare"></span>
+            </a>
+
+            <a href="#contact" class="hud-btn hud-btn-outline hero-btn" id="hero-btn-contact">
+              <span class="btn-text">CONTACT ME</span>
+              <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Hero Metrics Telemetry Strip -->
+          <div class="hero-stats-strip">
+            <div class="stat-cell">
+              <span class="stat-number">04+</span>
+              <span class="stat-label">DOMAINS EXPLORED</span>
+            </div>
+            <div class="stat-separator"></div>
+            <div class="stat-cell">
+              <span class="stat-number">12+</span>
+              <span class="stat-label">TECH PLATFORMS</span>
+            </div>
+            <div class="stat-separator"></div>
+            <div class="stat-cell">
+              <span class="stat-number">S3</span>
+              <span class="stat-label">ACADEMIC PHASE</span>
+            </div>
+            <div class="stat-separator"></div>
+            <div class="stat-cell">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">PASSION &amp; DRIVE</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Interactive Holographic Profile Photo Area -->
+        <div class="hero-visual">
+          <div class="profile-hologram-stage" id="profile-stage">
+
+            <!-- Holographic Rotating Reticle Rings -->
+            <div class="holo-ring holo-ring-outer"></div>
+            <div class="holo-ring holo-ring-middle"></div>
+            <div class="holo-ring holo-ring-inner"></div>
+
+            <!-- Geometric Tech HUD Brackets -->
+            <div class="hud-corner-bracket bracket-tl"></div>
+            <div class="hud-corner-bracket bracket-tr"></div>
+            <div class="hud-corner-bracket bracket-bl"></div>
+            <div class="hud-corner-bracket bracket-br"></div>
+
+            <!-- Profile Parallax Glass Card -->
+            <div class="profile-card" id="profile-card">
+
+              <!-- Subtle Cyber Grid Background -->
+              <div class="profile-card-grid"></div>
+
+              <!-- Real Profile Photograph (Transparent PNG Cutout) -->
+              <div class="profile-photo-wrapper">
+                <img src="assets/images/profile.png"
+                  alt="Sanjay G. - Computer Science Engineering Student &amp; Developer" class="profile-photo-img"
+                  id="profile-img" onerror="this.onerror=null; this.src='assets/images/profile.jpg';" />
+                <!-- Holographic Scanning Laser -->
+                <div class="photo-scanline"></div>
+                <!-- Shimmer Depth Glint -->
+                <div class="photo-glint"></div>
+              </div>
+
+              <!-- HUD Data Overlays on Card -->
+              <div class="profile-hud-data">
+                <div class="hud-tag top-left">
+                  <span class="tag-label">ID //</span>
+                  <span class="tag-val">SG-2026-CSE</span>
+                </div>
+                <div class="hud-tag top-right">
+                  <span class="tag-val">8.52°N 76.93°E</span>
+                </div>
+                <div class="hud-tag bottom-left">
+                  <span class="status-indicator-dot"></span>
+                  <span class="tag-val">READY FOR INNOVATION</span>
+                </div>
+                <div class="hud-tag bottom-right">
+                  <span class="tag-val">S COLLEGE OF ENG</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Floating Satellite Badges around Profile -->
+            <div class="floating-badge badge-top-left" data-speed="1.2">
+              <span class="badge-icon">⚡</span>
+              <span class="badge-txt">SOFTWARE &amp; WEB</span>
+            </div>
+
+            <div class="floating-badge badge-bottom-right" data-speed="0.8">
+              <span class="badge-icon">🎮</span>
+              <span class="badge-txt">GAME DEV &amp; 3D</span>
+            </div>
+
+            <div class="floating-badge badge-bottom-left" data-speed="1.0">
+              <span class="badge-icon">🧠</span>
+              <span class="badge-txt">AI &amp; VISION</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Hero Scroll Indicator -->
+      <a href="#about" class="scroll-down-beacon" aria-label="Scroll to About">
+        <span class="beacon-label">SCROLL TO INITIALIZE</span>
+        <div class="beacon-mouse">
+          <div class="mouse-wheel"></div>
+        </div>
+      </a>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 2: ABOUT // BIOGRAPHY & OPERATIVE PROFILE
+         ================================================================== -->
+    <section id="about" class="about-section section-block">
+      <div class="container">
+
+        <!-- Section Header -->
+        <div class="section-header">
+          <div class="section-tag">
+            <span class="tag-code">02 // OPERATIVE PROFILE</span>
+            <span class="tag-line"></span>
+          </div>
+          <h2 class="section-title">ABOUT ME</h2>
+          <p class="section-subtitle">Biography, academic trajectory and core engineering philosophy</p>
+        </div>
+
+        <div class="about-grid">
+
+          <!-- Left Column: Dossier Bio & Core Identity Card -->
+          <div class="about-dossier-card">
+            <div class="dossier-card-glow"></div>
+
+            <div class="dossier-header">
+              <div class="dossier-avatar-wrap">
+                <div class="dossier-avatar-inner">
+                  <img src="my image2.png" alt="Sanjay G." class="dossier-avatar-img" />
+                </div>
+                <span class="avatar-status-pip"></span>
+              </div>
+              <div class="dossier-meta">
+                <div class="dossier-badge">IDENTITY VERIFIED</div>
+                <h3 class="dossier-name">SANJAY G.</h3>
+                <span class="dossier-cadence">B.Tech Computer Science &amp; Engineering · S3</span>
+                <span class="dossier-location">📍 Thiruvananthapuram, Kerala, India</span>
+              </div>
+            </div>
+
+            <!-- Monospace Terminal Bio Box -->
+            <div class="dossier-terminal-box">
+              <div class="term-bar">
+                <span class="term-dot t-red"></span>
+                <span class="term-dot t-yellow"></span>
+                <span class="term-dot t-green"></span>
+                <span class="term-title">sanjay@terminal:~ dossier.sh</span>
+              </div>
+              <div class="term-body">
+                <p class="term-line"><span class="t-prompt">$</span> cat bio_statement.txt</p>
+                <p class="term-output">
+                  "Third-semester Computer Science &amp; Engineering undergraduate with an intense fascination for
+                  building responsive web applications, real-time 3D environments, arcade games, and intelligent
+                  systems. I approach development through a union of rock-solid algorithmic logic, playful interaction
+                  design, and modern production standards."
+                </p>
+                <p class="term-line"><span class="t-prompt">$</span> echo $CORE_PHILOSOPHY</p>
+                <p class="term-output t-cyan">"Transforming abstract code into tangible, high-impact digital
+                  experiences."</p>
+              </div>
+            </div>
+
+            <!-- Spec Matrix Table -->
+            <div class="dossier-spec-matrix">
+              <div class="spec-matrix-item">
+                <span class="spec-key">INSTITUTION</span>
+                <span class="spec-val">ACE College of Engineering / KTU</span>
+              </div>
+              <div class="spec-matrix-item">
+                <span class="spec-key">SEMESTER CADENCE</span>
+                <span class="spec-val highlight-val">S3 (Third Semester)</span>
+              </div>
+              <div class="spec-matrix-item">
+                <span class="spec-key">CORE DISCIPLINES</span>
+                <span class="spec-val">Web · 3D WebGL · AI &amp; Games</span>
+              </div>
+              <div class="spec-matrix-item">
+                <span class="spec-key">STATUS</span>
+                <span class="spec-val status-val">● Available for Collaborations</span>
+              </div>
+            </div>
+
+            <div class="dossier-actions">
+              <a href="#contact" class="hud-btn hud-btn-cyan">
+                <span class="btn-text">CONNECT DIRECTLY</span>
+                <span class="btn-flare"></span>
+              </a>
+              <a href="https://www.linkedin.com/in/sanjay-g-62415443b/" target="_blank" rel="noopener noreferrer"
+                class="hud-btn hud-btn-outline">
+                <span class="btn-text">LINKEDIN PROFILE ↗</span>
+                <span class="btn-flare"></span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Engineering Pillars & Academic Milestones -->
+          <div class="about-details-column">
+
+            <!-- Engineering Pillars -->
+            <div class="pillars-container">
+              <div class="column-subtitle-strip">
+                <span class="strip-icon">⚡</span>
+                <span class="strip-text">CORE ENGINEERING PILLARS</span>
+              </div>
+
+              <div class="pillars-grid">
+
+                <div class="pillar-card">
+                  <div class="pillar-icon-box">🌐</div>
+                  <div class="pillar-info">
+                    <h4 class="pillar-title">Web &amp; Software Systems</h4>
+                    <p class="pillar-desc">
+                      Building modern, responsive frontend architectures with HTML5, CSS3, JavaScript, and Netlify/REST
+                      integrations.
+                    </p>
+                    <div class="pillar-tags">
+                      <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Netlify</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pillar-card">
+                  <div class="pillar-icon-box">🎮</div>
+                  <div class="pillar-info">
+                    <h4 class="pillar-title">3D Graphics &amp; Game Dev</h4>
+                    <p class="pillar-desc">
+                      Crafting real-time interactive canvas game loops, WebGL/Three.js environments, collision physics,
+                      and retro arcade systems.
+                    </p>
+                    <div class="pillar-tags">
+                      <span>Three.js</span><span>Canvas 2D</span><span>Arcade</span><span>Particles</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pillar-card">
+                  <div class="pillar-icon-box">🧠</div>
+                  <div class="pillar-info">
+                    <h4 class="pillar-title">AI &amp; Computer Vision</h4>
+                    <p class="pillar-desc">
+                      Experimenting with computer vision pipelines in OpenCV, automated workflows, and student study
+                      assistant systems.
+                    </p>
+                    <div class="pillar-tags">
+                      <span>Python</span><span>OpenCV</span><span>FastAPI</span><span>AI Logic</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pillar-card">
+                  <div class="pillar-icon-box">⚙️</div>
+                  <div class="pillar-info">
+                    <h4 class="pillar-title">Computational Logic &amp; C</h4>
+                    <p class="pillar-desc">
+                      Strong foundation in structured problem solving, C language fundamentals, algorithms, and system
+                      optimization.
+                    </p>
+                    <div class="pillar-tags">
+                      <span>C Programming</span><span>Data Structures</span><span>Algorithms</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Academic Timeline & Milestones -->
+            <div class="milestones-container">
+              <div class="column-subtitle-strip">
+                <span class="strip-icon">🚀</span>
+                <span class="strip-text">ACADEMIC &amp; DEVELOPMENT TRAJECTORY</span>
+              </div>
+
+              <div class="milestones-timeline">
+
+                <div class="timeline-node current-node">
+                  <div class="node-marker">
+                    <span class="marker-core"></span>
+                    <span class="marker-pulse"></span>
+                  </div>
+                  <div class="node-content">
+                    <div class="node-header">
+                      <span class="node-year">2024 – PRESENT (SEMESTER 3)</span>
+                      <span class="node-badge current">ACTIVE</span>
+                    </div>
+                    <h5 class="node-title">B.Tech Computer Science &amp; Engineering (S3)</h5>
+                    <p class="node-desc">
+                      Currently undertaking S3 studies in Computer Science at ACE College of Engineering, focusing on
+                      computational engineering, data structures, algorithms, and interactive creative web technologies.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="timeline-node">
+                  <div class="node-marker">
+                    <span class="marker-core"></span>
+                  </div>
+                  <div class="node-content">
+                    <div class="node-header">
+                      <span class="node-year">2024 (SEMESTER 1)</span>
+                      <span class="node-badge">COMPLETED</span>
+                    </div>
+                    <h5 class="node-title">Semester 1 Foundations &amp; C Programming</h5>
+                    <p class="node-desc">
+                      Achieved foundational engineering mastery across structured C programming, algorithmic analysis,
+                      engineering mathematics, and digital logic.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="timeline-node">
+                  <div class="node-marker">
+                    <span class="marker-core"></span>
+                  </div>
+                  <div class="node-content">
+                    <div class="node-header">
+                      <span class="node-year">2022 – 2024</span>
+                      <span class="node-badge">MILESTONE</span>
+                    </div>
+                    <h5 class="node-title">Higher Secondary Education (Science &amp; Mathematics)</h5>
+                    <p class="node-desc">
+                      Completed rigorous pre-university curriculum in Physics, Chemistry, and Mathematics in
+                      Thiruvananthapuram, establishing analytical rigor.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 3: SKILLS // INTERACTIVE FUTURISTIC MODULES
+         ================================================================== -->
+    <section id="skills" class="skills-section section-block">
+      <div class="container">
+
+        <!-- Section Header -->
+        <div class="section-header">
+          <div class="section-tag">
+            <span class="tag-code">03 // CAPABILITIES</span>
+            <span class="tag-line"></span>
+          </div>
+          <h2 class="section-title">MY SKILLS</h2>
+          <p class="section-subtitle">Technologies I work with and explore</p>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="skills-filter-hud" role="tablist" aria-label="Skill Categories">
+          <button class="filter-tab active" data-filter="all" type="button" role="tab">
+            <span class="tab-index">00</span> ALL DISCIPLINES
+          </button>
+          <button class="filter-tab" data-filter="programming" type="button" role="tab">
+            <span class="tab-index">01</span> PROGRAMMING
+          </button>
+          <button class="filter-tab" data-filter="web" type="button" role="tab">
+            <span class="tab-index">02</span> WEB DEVELOPMENT
+          </button>
+          <button class="filter-tab" data-filter="game" type="button" role="tab">
+            <span class="tab-index">03</span> GAME DEV
+          </button>
+          <button class="filter-tab" data-filter="creative" type="button" role="tab">
+            <span class="tab-index">04</span> 3D / CREATIVE
+          </button>
+          <button class="filter-tab" data-filter="tools" type="button" role="tab">
+            <span class="tab-index">05</span> TOOLS
+          </button>
+          <button class="filter-tab" data-filter="ai" type="button" role="tab">
+            <span class="tab-index">06</span> AI &amp; VISION
+          </button>
+        </div>
+
+        <!-- Skills Grid Container -->
+        <div class="skills-grid" id="skills-grid">
+
+          <!-- CATEGORY 1: PROGRAMMING -->
+          <div class="skill-card-3d" data-category="programming">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- C Icon -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M15 9.5a5 5 0 1 0 0 5"></path>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-proficient">Foundation</div>
+              </div>
+              <h3 class="skill-title">C</h3>
+              <p class="skill-tagline">Low-Level Logic &amp; Memory Management</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">Programming</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 82%;"></span></div>
+                <span class="telemetry-txt">CORE // CSE</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card-3d" data-category="programming">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- Python Icon -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2C6.48 2 6 4 6 6v3h6V7h3a2 2 0 0 0 2-2c0-1.5-1.5-3-5-3z"></path>
+                    <circle cx="9" cy="5" r="1" fill="currentColor"></circle>
+                    <path d="M12 22c5.52 0 6-2 6-4v-3h-6v2H9a2 2 0 0 0-2 2c0 1.5 1.5 3 5 3z"></path>
+                    <circle cx="15" cy="19" r="1" fill="currentColor"></circle>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-explored">Proficient</div>
+              </div>
+              <h3 class="skill-title">Python</h3>
+              <p class="skill-tagline">Data Scripting, Automation &amp; AI Algorithms</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">Programming</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 88%;"></span></div>
+                <span class="telemetry-txt">SCRIPT &amp; ML</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card-3d" data-category="programming">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- Java Icon -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                    <line x1="6" y1="1" x2="6" y2="4"></line>
+                    <line x1="10" y1="1" x2="10" y2="4"></line>
+                    <line x1="14" y1="1" x2="14" y2="4"></line>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-explored">Explored</div>
+              </div>
+              <h3 class="skill-title">Java</h3>
+              <p class="skill-tagline">Object-Oriented Design &amp; Multithreading</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">Programming</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 84%;"></span></div>
+                <span class="telemetry-txt">OOP &amp; THREADS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card-3d" data-category="programming">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- JS Icon -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                    <path d="M10 16v-4m0 0a2 2 0 0 0-2-2"></path>
+                    <path d="M17 12a2 2 0 0 0-2-2h-1v6h1a2 2 0 0 0 2-2z"></path>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-proficient">Proficient</div>
+              </div>
+              <h3 class="skill-title">JavaScript</h3>
+              <p class="skill-tagline">Dynamic Logic, DOM &amp; Interactive Web Experiences</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">Programming</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 86%;"></span></div>
+                <span class="telemetry-txt">ES6+ &amp; ASYNC</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CATEGORY 2: WEB DEVELOPMENT -->
+          <div class="skill-card-3d" data-category="web">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- HTML Icon -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                    <line x1="14" y1="4" x2="10" y2="20"></line>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-proficient">Proficient</div>
+              </div>
+              <h3 class="skill-title">HTML5</h3>
+              <p class="skill-tagline">Web Structure, Semantic Layouts &amp; Accessibility</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">Web Development</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 92%;"></span></div>
+                <span class="telemetry-txt">STRUCTURE</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card-3d" data-category="web">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- CSS Icon -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l7 2.5-1.5 13-5.5 3-5.5-3L5 4.5 12 2z"></path>
+                    <path d="M8 8h8l-.5 4H8.5l.3 2.5L12 15.5l3.2-1 .3-2.5"></path>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-proficient">Proficient</div>
+              </div>
+              <h3 class="skill-title">CSS3</h3>
+              <p class="skill-tagline">Interface Styling, Animations &amp; Responsive Layouts</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">Web Development</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 90%;"></span></div>
+                <span class="telemetry-txt">MODERN UI</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card-3d" data-category="web">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- React Icon -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)"></ellipse>
+                    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(90 12 12)"></ellipse>
+                    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(150 12 12)"></ellipse>
+                    <circle cx="12" cy="12" r="2" fill="currentColor"></circle>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-learning">Currently Learning</div>
+              </div>
+              <h3 class="skill-title">React</h3>
+              <p class="skill-tagline">Component Architectures &amp; Reactive State Models</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">Web Development</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 70%;"></span></div>
+                <span class="telemetry-txt">SPA &amp; HOOKS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CATEGORY 3: GAME DEVELOPMENT -->
+          <div class="skill-card-3d" data-category="game">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- Unity Icon -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                    <line x1="12" y1="22" x2="12" y2="12"></line>
+                    <line x1="22" y1="8.5" x2="12" y2="12"></line>
+                    <line x1="2" y1="8.5" x2="12" y2="12"></line>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-explored">Explored</div>
+              </div>
+              <h3 class="skill-title">Unity</h3>
+              <p class="skill-tagline">Real-time 3D Environments, C# Scripting &amp; Physics</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">Game Development</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 76%;"></span></div>
+                <span class="telemetry-txt">3D ENGINE</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card-3d" data-category="game">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- Godot Icon -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="4" y="6" width="16" height="12" rx="3"></rect>
+                    <circle cx="9" cy="11" r="1.5" fill="currentColor"></circle>
+                    <circle cx="15" cy="11" r="1.5" fill="currentColor"></circle>
+                    <path d="M9 15h6"></path>
+                    <path d="M12 2v4"></path>
+                    <path d="M7 3l2 3"></path>
+                    <path d="M17 3l-2 3"></path>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-learning">Currently Learning</div>
+              </div>
+              <h3 class="skill-title">Godot</h3>
+              <p class="skill-tagline">Lightweight Game Pipelines, 2D/3D Nodes &amp; GDScript</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">Game Development</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 68%;"></span></div>
+                <span class="telemetry-txt">OPEN SOURCE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CATEGORY 4: 3D / CREATIVE -->
+          <div class="skill-card-3d" data-category="creative">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- Blender Icon -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 2a10 10 0 0 1 10 10c0 4-2 7-6 8"></path>
+                    <path d="M2 12a10 10 0 0 0 10 10"></path>
+                    <line x1="8" y1="8" x2="3" y2="3"></line>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-explored">Explored</div>
+              </div>
+              <h3 class="skill-title">Blender</h3>
+              <p class="skill-tagline">3D Asset Modeling, Shading, Lighting &amp; UV Mapping</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">3D / Creative</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 74%;"></span></div>
+                <span class="telemetry-txt">SPATIAL 3D</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card-3d" data-category="creative">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- Game UI / Animation Icon -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                    <circle cx="7" cy="10" r="1" fill="currentColor"></circle>
+                    <circle cx="12" cy="7" r="1" fill="currentColor"></circle>
+                    <circle cx="17" cy="10" r="1" fill="currentColor"></circle>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-explored">Explored</div>
+              </div>
+              <h3 class="skill-title">Game UI &amp; Animation</h3>
+              <p class="skill-tagline">HUD Interfaces, Visual Feedback &amp; Motion Design</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">3D / Creative</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 80%;"></span></div>
+                <span class="telemetry-txt">INTERACTION</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CATEGORY 5: TOOLS -->
+          <div class="skill-card-3d" data-category="tools">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- Git / GitHub Icon -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="6" cy="6" r="3"></circle>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <circle cx="18" cy="9" r="3"></circle>
+                    <line x1="6" y1="9" x2="6" y2="15"></line>
+                    <path d="M18 12a9 9 0 0 1-9 9"></path>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-proficient">Proficient</div>
+              </div>
+              <h3 class="skill-title">Git &amp; GitHub</h3>
+              <p class="skill-tagline">Version Control, Branch Management &amp; Collaboration</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">Developer Tools</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 85%;"></span></div>
+                <span class="telemetry-txt">VCS PIPELINE</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card-3d" data-category="tools">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- VS Code & IDEs -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="4 17 10 11 4 5"></polyline>
+                    <line x1="12" y1="19" x2="20" y2="19"></line>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-proficient">Proficient</div>
+              </div>
+              <h3 class="skill-title">VS Code &amp; Android Studio</h3>
+              <p class="skill-tagline">Development Environments, Debuggers &amp; Mobile Emulators</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">Developer Tools</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 92%;"></span></div>
+                <span class="telemetry-txt">TOOLCHAINS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card-3d" data-category="tools">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- Photoshop & DaVinci Resolve -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                    <rect x="1" y="5" width="15" height="14" rx="2"></rect>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-explored">Explored</div>
+              </div>
+              <h3 class="skill-title">Photoshop &amp; DaVinci Resolve</h3>
+              <p class="skill-tagline">Graphic Post-Processing, Video Editing &amp; Color Grading</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">Creative Suite</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 78%;"></span></div>
+                <span class="telemetry-txt">PRODUCTION</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CATEGORY 6: AI / COMPUTER VISION -->
+          <div class="skill-card-3d" data-category="ai">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- OpenCV Icon -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="7" r="4"></circle>
+                    <circle cx="7" cy="16" r="4"></circle>
+                    <circle cx="17" cy="16" r="4"></circle>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-learning">Currently Learning</div>
+              </div>
+              <h3 class="skill-title">OpenCV</h3>
+              <p class="skill-tagline">Image Processing, Frame Filtering &amp; Edge Feature Detection</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">Computer Vision</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 72%;"></span></div>
+                <span class="telemetry-txt">IMAGE PIPELINE</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-card-3d" data-category="ai">
+            <div class="skill-card-inner">
+              <div class="card-glow-bg"></div>
+              <div class="card-hud-brackets">
+                <span class="cb cb-tl"></span>
+                <span class="cb cb-tr"></span>
+                <span class="cb cb-bl"></span>
+                <span class="cb cb-br"></span>
+              </div>
+              <div class="skill-card-top">
+                <div class="skill-icon-box">
+                  <!-- AI Concepts Icon -->
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                      d="M12 2a4 4 0 0 0-4 4v1a4 4 0 0 0-4 4v2a4 4 0 0 0 4 4v1a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4v-1a4 4 0 0 0 4-4v-2a4 4 0 0 0-4-4V6a4 4 0 0 0-4-4z">
+                    </path>
+                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                  </svg>
+                </div>
+                <div class="skill-badge badge-learning">Currently Learning</div>
+              </div>
+              <h3 class="skill-title">AI Concepts &amp; Applications</h3>
+              <p class="skill-tagline">Neural Networks, Prompt Engineering &amp; AI-driven Workflows</p>
+              <div class="skill-meta">
+                <span class="meta-label">Category:</span>
+                <span class="meta-val">Artificial Intelligence</span>
+              </div>
+              <div class="skill-footer-telemetry">
+                <div class="telemetry-bar"><span style="width: 70%;"></span></div>
+                <span class="telemetry-txt">NEURAL APPS</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Interactive Skills Circuit Connection Canvas -->
+        <canvas id="skills-circuit-canvas" class="skills-circuit-canvas"></canvas>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 4: PROJECTS // CINEMATIC SHOWCASE
+         ================================================================== -->
+    <section id="projects" class="projects-section section-block">
+      <div class="container">
+
+        <!-- Section Header -->
+        <div class="section-header">
+          <div class="section-tag">
+            <span class="tag-code">04 // ARCHITECTURE &amp; BUILDS</span>
+            <span class="tag-line"></span>
+          </div>
+          <h2 class="section-title">MY PROJECTS</h2>
+          <p class="section-subtitle">Things I have built, explored and experimented with</p>
+        </div>
+
+        <!-- Project Cards Grid -->
+        <div class="projects-grid" id="projects-grid">
+
+          <!-- PROJECT 01: DIET TRACKER -->
+          <article class="project-card" data-project-id="diet-tracker">
+            <div class="project-card-glass">
+
+              <!-- Card Header / Index -->
+              <div class="project-card-header">
+                <span class="project-index">PRJ // 01</span>
+                <span class="project-tag-pill">WEB APPLICATION</span>
+              </div>
+
+              <!-- Project Visual Showcase with 3D Parallax Image -->
+              <div class="project-media-wrap">
+                <img src="assets/images/project-diet.jpg" alt="Diet Tracker Web Application Interface"
+                  class="project-thumb-img" loading="lazy" />
+                <div class="project-overlay-hud">
+                  <div class="hud-chip">NUTRITION NEXUS v3.2</div>
+                  <div class="interactive-pulse">
+                    <span class="pulse-dot"></span>
+                    <span class="pulse-txt">INTERACTIVE BIO-METRICS</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project Core Body -->
+              <div class="project-body">
+                <h3 class="project-title">Diet Tracker Web Application</h3>
+                <p class="project-desc">
+                  A high-tech web application for tracking dietary information, caloric balance, macronutrient targets,
+                  and 30-day personal fitness goals.
+                </p>
+
+                <!-- Key Feature Highlights -->
+                <ul class="project-features-list">
+                  <li><span class="check-glyph">›</span> Height, Weight &amp; Age Biometric Input</li>
+                  <li><span class="check-glyph">›</span> Calorie, Protein &amp; Fat Target Telemetry</li>
+                  <li><span class="check-glyph">›</span> 30-Day Historical Trend Analytics</li>
+                </ul>
+
+                <!-- Technologies Used -->
+                <div class="project-tech-stack">
+                  <span class="tech-chip">HTML5</span>
+                  <span class="tech-chip">CSS3</span>
+                  <span class="tech-chip">JavaScript</span>
+                  <span class="tech-chip">LocalStorage</span>
+                </div>
+              </div>
+
+              <!-- Card Action Button -->
+              <div class="project-footer">
+                <button class="project-view-btn hud-btn hud-btn-outline" data-open-modal="diet-tracker" type="button">
+                  <span class="btn-text">ANALYZE SPECS &amp; DEMO</span>
+                  <svg class="btn-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- PROJECT 02: JAVA MULTITHREADED FILE DOWNLOADER -->
+          <article class="project-card" data-project-id="java-downloader">
+            <div class="project-card-glass">
+
+              <!-- Card Header / Index -->
+              <div class="project-card-header">
+                <span class="project-index">PRJ // 02</span>
+                <span class="project-tag-pill">CONCURRENCY &amp; BACKEND</span>
+              </div>
+
+              <!-- Project Visual Showcase -->
+              <div class="project-media-wrap">
+                <img src="assets/images/project-downloader.jpg" alt="Java Multithreaded File Downloader Interface"
+                  class="project-thumb-img" loading="lazy" />
+                <div class="project-overlay-hud">
+                  <div class="hud-chip">HYPERTHREADS v3.1</div>
+                  <div class="interactive-pulse">
+                    <span class="pulse-dot"></span>
+                    <span class="pulse-txt">16/24 CONCURRENT WORKERS</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project Core Body -->
+              <div class="project-body">
+                <h3 class="project-title">Java Multithreaded File Downloader</h3>
+                <p class="project-desc">
+                  A high-performance Java system focused on multithreaded chunk-based downloading, thread pool
+                  optimization, and resume capabilities.
+                </p>
+
+                <!-- Key Feature Highlights -->
+                <ul class="project-features-list">
+                  <li><span class="check-glyph">›</span> Multi-threaded Chunked Byte Streaming</li>
+                  <li><span class="check-glyph">›</span> ExecutorService Thread Pool Management</li>
+                  <li><span class="check-glyph">›</span> Seamless Pause, Resume &amp; Checkpointing</li>
+                </ul>
+
+                <!-- Technologies Used -->
+                <div class="project-tech-stack">
+                  <span class="tech-chip">Java 21</span>
+                  <span class="tech-chip">ExecutorService</span>
+                  <span class="tech-chip">Spring Boot</span>
+                  <span class="tech-chip">MySQL</span>
+                </div>
+              </div>
+
+              <!-- Card Action Button -->
+              <div class="project-footer">
+                <button class="project-view-btn hud-btn hud-btn-outline" data-open-modal="java-downloader"
+                  type="button">
+                  <span class="btn-text">ANALYZE SPECS &amp; DEMO</span>
+                  <svg class="btn-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- PROJECT 03: AI STUDY / CAREER ASSISTANT -->
+          <article class="project-card" data-project-id="ai-assistant">
+            <div class="project-card-glass">
+
+              <!-- Card Header / Index -->
+              <div class="project-card-header">
+                <span class="project-index">PRJ // 03</span>
+                <span class="project-tag-pill">AI &amp; INTELLIGENCE</span>
+              </div>
+
+              <!-- Project Visual Showcase -->
+              <div class="project-media-wrap">
+                <img src="assets/images/project-ai.jpg" alt="AI Study and Career Assistant Interface"
+                  class="project-thumb-img" loading="lazy" />
+                <div class="project-overlay-hud">
+                  <div class="hud-chip">AURORA NEURAL CORE</div>
+                  <div class="interactive-pulse">
+                    <span class="pulse-dot"></span>
+                    <span class="pulse-txt">AI ACCURACY: 98%</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project Core Body -->
+              <div class="project-body">
+                <h3 class="project-title">AI Study / Career Assistant</h3>
+                <p class="project-desc">
+                  An intelligent AI-based assistant concept engineered to guide engineering students with curriculum
+                  pacing, concept mastery, and roadmap mapping.
+                </p>
+
+                <!-- Key Feature Highlights -->
+                <ul class="project-features-list">
+                  <li><span class="check-glyph">›</span> Syllabus Tree &amp; Skill Radar Visualizer</li>
+                  <li><span class="check-glyph">›</span> NLP Question Answering &amp; Summarization</li>
+                  <li><span class="check-glyph">›</span> Career Roadmap Milestones &amp; Practice Tracks</li>
+                </ul>
+
+                <!-- Technologies Used -->
+                <div class="project-tech-stack">
+                  <span class="tech-chip">Python</span>
+                  <span class="tech-chip">AI Concepts</span>
+                  <span class="tech-chip">FastAPI</span>
+                  <span class="tech-chip">Modern Web</span>
+                </div>
+              </div>
+
+              <!-- Card Action Button -->
+              <div class="project-footer">
+                <button class="project-view-btn hud-btn hud-btn-outline" data-open-modal="ai-assistant" type="button">
+                  <span class="btn-text">ANALYZE SPECS &amp; DEMO</span>
+                  <svg class="btn-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- PROJECT 04: EMERGENCY TRANSMITTER APPLICATION -->
+          <article class="project-card" data-project-id="emergency-transmitter">
+            <div class="project-card-glass">
+
+              <!-- Card Header / Index -->
+              <div class="project-card-header">
+                <span class="project-index">PRJ // 04</span>
+                <span class="project-tag-pill">CRITICAL TELEMETRY</span>
+              </div>
+
+              <!-- Project Visual Showcase -->
+              <div class="project-media-wrap">
+                <img src="assets/images/project-emergency.jpg" alt="Emergency Transmitter Application Interface"
+                  class="project-thumb-img" loading="lazy" />
+                <div class="project-overlay-hud">
+                  <div class="hud-chip">ETA DISPATCH PROTOCOL</div>
+                  <div class="interactive-pulse">
+                    <span class="pulse-dot"></span>
+                    <span class="pulse-txt">BEACON ACTIVE // 406.037 MHz</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project Core Body -->
+              <div class="project-body">
+                <h3 class="project-title">Emergency Transmitter Application</h3>
+                <p class="project-desc">
+                  A mission-critical emergency communication concept designed for rapid distress broadcasting, live GPS
+                  coordinates, and mesh network relay.
+                </p>
+
+                <!-- Key Feature Highlights -->
+                <ul class="project-features-list">
+                  <li><span class="check-glyph">›</span> One-Tap Emergency Distress Beacon Dispatch</li>
+                  <li><span class="check-glyph">›</span> Real-time Geospatial Radar &amp; Telemetry</li>
+                  <li><span class="check-glyph">›</span> Ultra Low-Bandwidth Encrypted Packet Transmit</li>
+                </ul>
+
+                <!-- Technologies Used -->
+                <div class="project-tech-stack">
+                  <span class="tech-chip">JavaScript</span>
+                  <span class="tech-chip">Geolocation API</span>
+                  <span class="tech-chip">WebSockets</span>
+                  <span class="tech-chip">PWA</span>
+                </div>
+              </div>
+
+              <!-- Card Action Button -->
+              <div class="project-footer">
+                <button class="project-view-btn hud-btn hud-btn-outline" data-open-modal="emergency-transmitter"
+                  type="button">
+                  <span class="btn-text">ANALYZE SPECS &amp; DEMO</span>
+                  <svg class="btn-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 5: CONTACT // LET'S CONNECT
+         ================================================================== -->
+    <section id="contact" class="contact-section section-block">
+      <div class="container">
+
+        <!-- Section Header -->
+        <div class="section-header">
+          <div class="section-tag">
+            <span class="tag-code">05 // COMM CHANNELS</span>
+            <span class="tag-line"></span>
+          </div>
+          <h2 class="section-title">LET'S CONNECT</h2>
+          <p class="section-subtitle">Have an idea, project or opportunity? Let's build something.</p>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- Contact Left: Interactive Cards & Direct Info -->
+          <div class="contact-channels">
+
+            <div class="channels-intro">
+              <h3 class="channels-heading">Direct Transmission Matrix</h3>
+              <p class="channels-desc">
+                Feel free to reach out directly via verified channels or send a transmission through the terminal form.
+              </p>
+            </div>
+
+            <!-- EMAIL CARD (Active & Real) -->
+            <a href="mailto:sanjaygsanjayg51@gmail.com" class="contact-card active-channel" id="contact-email-card"
+              title="Click to compose email to Sanjay G.">
+              <div class="card-edge-glow"></div>
+              <div class="channel-icon-wrap">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="channel-details">
+                <div class="channel-header-row">
+                  <span class="channel-type">PRIMARY EMAIL</span>
+                  <span class="channel-status status-verified">● VERIFIED</span>
+                </div>
+                <div class="channel-val">sanjaygsanjayg51@gmail.com</div>
+                <span class="channel-action-hint">Click to launch default mail app ↗</span>
+              </div>
+              <button type="button" class="copy-channel-btn" id="copy-email-btn" title="Copy email to clipboard"
+                aria-label="Copy email address">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </a>
+
+            <!-- LINKEDIN CARD (Active & Real) -->
+            <a href="https://www.linkedin.com/in/sanjay-g-62415443b/" target="_blank" rel="noopener noreferrer"
+              class="contact-card active-channel" id="contact-linkedin-card"
+              title="Open Sanjay G.'s LinkedIn Profile in a new tab">
+              <div class="card-edge-glow"></div>
+              <div class="channel-icon-wrap">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                  <path
+                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28m1.4 9.74v-8.37H5.06v8.37h2.8z">
+                  </path>
+                </svg>
+              </div>
+              <div class="channel-details">
+                <div class="channel-header-row">
+                  <span class="channel-type">PROFESSIONAL NETWORK</span>
+                  <span class="channel-status status-verified">● ACTIVE PROFILE</span>
+                </div>
+                <div class="channel-val">linkedin.com/in/sanjay-g-62415443b</div>
+                <span class="channel-action-hint">Opens LinkedIn in new tab ↗</span>
+              </div>
+            </a>
+
+            <!-- LOCATION CARD -->
+            <div class="contact-card info-channel">
+              <div class="channel-icon-wrap">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="channel-details">
+                <div class="channel-header-row">
+                  <span class="channel-type">CURRENT BASE</span>
+                  <span class="channel-status">BEACON ACTIVE</span>
+                </div>
+                <div class="channel-val">Thiruvananthapuram, Kerala, India</div>
+                <span class="channel-sub">ACE College of Engineering · B.Tech CSE (S3)</span>
+              </div>
+            </div>
+
+            <!-- PLACEHOLDERS CARDS (Phone, GitHub, Instagram) -->
+            <div class="placeholders-grid">
+
+              <!-- Phone Placeholder -->
+              <div class="contact-card placeholder-channel" title="Phone number placeholder - To be provided">
+                <div class="channel-icon-wrap">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="channel-details">
+                  <span class="channel-type">PHONE</span>
+                  <span class="channel-val placeholder-val"> +91 79078 18757</span>
+                </div>
+              </div>
+
+              <!-- GitHub Placeholder -->
+              <div class="contact-card placeholder-channel" title="GitHub link placeholder - To be provided">
+                <div class="channel-icon-wrap">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path
+                      d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 14.42 22 12A10 10 0 0 0 12 2z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="channel-details">
+                  <span class="channel-type">GITHUB</span>
+                  <span class="channel-val placeholder-val">https://github.com/dashboard</span>
+                </div>
+              </div>
+
+              <!-- Instagram Placeholder -->
+              <div class="contact-card placeholder-channel" title="Instagram link placeholder - To be provided">
+                <div class="channel-icon-wrap">
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </div>
+                <div class="channel-details">
+                  <span class="channel-type">INSTAGRAM</span>
+                  <span
+                    class="channel-val placeholder-val">https://www.instagram.com/__sanjay_g_007__?stkn=ZXozaHlhZWpzdnNw</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Contact Right: Futuristic Holographic Form -->
+          <div class="contact-form-wrapper">
+            <div class="form-hud-panel">
+
+              <div class="form-panel-header">
+                <div class="form-header-badge">
+                  <span class="badge-dot"></span>
+                  <span>DISPATCH CONSOLE</span>
+                </div>
+                <span class="form-header-spec">ENC // TLS 256-BIT</span>
+              </div>
+
+              <form id="contact-form" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field"
+                class="hud-contact-form" novalidate>
+                <!-- Netlify Form Hidden Inputs -->
+                <input type="hidden" name="form-name" value="contact" />
+                <p class="hidden-field" style="display: none;">
+                  <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+                </p>
+
+                <!-- Sender Name -->
+                <div class="form-field-group">
+                  <label for="contact-name" class="field-label">
+                    <span class="label-idx">01</span> SENDER NAME
+                  </label>
+                  <div class="input-wrapper">
+                    <input type="text" id="contact-name" name="name" class="hud-input" placeholder="Enter your name..."
+                      required autocomplete="name" />
+                    <div class="input-corner"></div>
+                  </div>
+                  <span class="field-error-msg" id="name-error">Please enter your name</span>
+                </div>
+
+                <!-- Sender Email -->
+                <div class="form-field-group">
+                  <label for="contact-email" class="field-label">
+                    <span class="label-idx">02</span> RETURN EMAIL
+                  </label>
+                  <div class="input-wrapper">
+                    <input type="email" id="contact-email" name="email" class="hud-input"
+                      placeholder="your.email@domain.com" required autocomplete="email" />
+                    <div class="input-corner"></div>
+                  </div>
+                  <span class="field-error-msg" id="email-error">Please enter a valid email address</span>
+                </div>
+
+                <!-- Subject -->
+                <div class="form-field-group">
+                  <label for="contact-subject" class="field-label">
+                    <span class="label-idx">03</span> TRANSMISSION SUBJECT
+                  </label>
+                  <div class="input-wrapper">
+                    <input type="text" id="contact-subject" name="subject" class="hud-input"
+                      placeholder="Collaboration / Project / Question" required />
+                    <div class="input-corner"></div>
+                  </div>
+                  <span class="field-error-msg" id="subject-error">Please specify a subject</span>
+                </div>
+
+                <!-- Message -->
+                <div class="form-field-group">
+                  <label for="contact-message" class="field-label">
+                    <span class="label-idx">04</span> MESSAGE CONTENT
+                  </label>
+                  <div class="input-wrapper">
+                    <textarea id="contact-message" name="message" rows="5" class="hud-input hud-textarea"
+                      placeholder="Type your message or project concept here..." required></textarea>
+                    <div class="input-corner"></div>
+                  </div>
+                  <span class="field-error-msg" id="message-error">Please enter your message</span>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-submit-row">
+                  <button type="submit" class="hud-btn hud-btn-cyan submit-btn" id="contact-submit-btn">
+                    <span class="btn-text">TRANSMIT MESSAGE</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                      stroke-width="2">
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    <span class="btn-flare"></span>
+                  </button>
+                  <span class="form-privacy-note">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    Secure direct transmission
+                  </span>
+                </div>
+
+              </form>
+
+              <!-- Animated Form Submission Success Modal / State -->
+              <div id="form-success-hud" class="form-success-hud" aria-hidden="true">
+                <div class="success-reticle">
+                  <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#00f0ff" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="9 12 11 14 15 10"></polyline>
+                  </svg>
+                </div>
+                <h4 class="success-title">TRANSMISSION REGISTERED!</h4>
+                <p class="success-text" id="success-custom-text">
+                  Thank you for reaching out! Your message package has been verified and processed for Sanjay G.
+                </p>
+                <div class="success-meta-box">
+                  <div class="meta-row"><span>PROTOCOL:</span> <span>NETLIFY FORMS // ACTIVE</span></div>
+                  <div class="meta-row"><span>DESTINATION:</span> <span>sanjaygsanjayg51@gmail.com</span></div>
+                  <div class="meta-row"><span>STATUS:</span> <span class="text-neon-cyan">CONFIRMED &amp; LOGGED</span>
+                  </div>
+                </div>
+                <button type="button" class="hud-btn hud-btn-outline" id="reset-form-btn">
+                  <span class="btn-text">SEND ANOTHER MESSAGE</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION 6: BONUS LEVEL // ASTEROID DEFENSE ARCADE
+         ================================================================== -->
+    <section id="bonus-game" class="game-section section-block">
+      <div class="container game-container">
+
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <div class="section-tag center-tag">
+            <span class="tag-code">06 // BONUS LEVEL // RETRO ARCADE</span>
+            <span class="tag-line"></span>
+          </div>
+          <h2 class="section-title">ASTEROID DEFENSE</h2>
+          <p class="section-subtitle">Asteroid field detected! Move mouse to target, click to fire plasma lasers.</p>
+        </div>
+
+        <!-- Arcade Machine Cabinet Frame -->
+        <div class="arcade-cabinet-frame" id="arcade-frame">
+          <div class="cabinet-top-header">
+            <div class="cabinet-status-chip">
+              <span class="chip-blink-dot"></span>
+              <span>SECTOR DEFENSE CORE // SANJAY.G OS</span>
+            </div>
+            <div class="cabinet-scores-row">
+              <div class="cabinet-hud-stat">
+                <span class="stat-h-label">HIGH SCORE:</span>
+                <span class="stat-h-val" id="game-high-score">0000</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- The Game Canvas Viewport -->
+          <div class="arcade-screen-wrap" id="arcade-screen-wrap">
+            <canvas id="game-canvas" class="game-canvas"></canvas>
+            <div class="arcade-crt-overlay"></div>
+            <div class="arcade-vignette"></div>
+
+            <!-- In-game Floating HUD -->
+            <div class="in-game-hud" id="in-game-hud">
+              <div class="hud-left-stats">
+                <div class="game-stat-box">
+                  <span class="hud-label">SCORE</span>
+                  <span class="hud-val" id="game-score-display">0000</span>
+                </div>
+                <div class="game-stat-box">
+                  <span class="hud-label">DESTROYED</span>
+                  <span class="hud-val" id="game-kills-display">00</span>
+                </div>
+              </div>
+
+              <!-- Animated Combo Badge -->
+              <div class="hud-center-combo" id="game-combo-container">
+                <span class="combo-text" id="game-combo-text">COMBO x2</span>
+              </div>
+
+              <div class="hud-right-stats">
+                <div class="game-stat-box">
+                  <span class="hud-label">SHIELD</span>
+                  <div class="shield-hearts" id="game-shields-display">
+                    <span class="heart">♥</span>
+                    <span class="heart">♥</span>
+                    <span class="heart">♥</span>
+                  </div>
+                </div>
+                <div class="game-stat-box">
+                  <span class="hud-label">SECTOR TIME</span>
+                  <span class="hud-val" id="game-timer-display">45s</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Start Screen Overlay -->
+            <div class="game-overlay-screen" id="game-start-screen">
+              <div class="screen-retro-badge">BONUS LEVEL DETECTED</div>
+              <h3 class="screen-hero-title">ASTEROID DEFENSE</h3>
+              <p class="screen-hero-desc">
+                Defend the portfolio core from incoming asteroid debris! Move cursor to aim the targeting reticle, click
+                to shoot cartoon plasma lasers, and chain hits for multiplier combos.
+              </p>
+              <div class="game-instructions-strip">
+                <div class="inst-item"><span>🎯</span> AIM WITH MOUSE</div>
+                <div class="inst-item"><span>💥</span> CLICK TO FIRE</div>
+                <div class="inst-item"><span>⚡</span> MULTI-HIT COMBOS</div>
+              </div>
+              <button type="button" class="hud-btn hud-btn-cyan game-cta-btn" id="start-game-btn">
+                <span class="btn-text">🚀 ENGAGE DEFENSE // START GAME</span>
+                <span class="btn-flare"></span>
+              </button>
+            </div>
+
+            <!-- Game Over / Victory Overlay -->
+            <div class="game-overlay-screen hidden" id="game-over-screen">
+              <div class="screen-retro-badge" id="game-result-badge">SECTOR SECURED</div>
+              <h3 class="screen-hero-title" id="game-result-title">MISSION COMPLETE</h3>
+              <div class="game-results-card">
+                <div class="res-row">
+                  <span class="res-label">ASTEROIDS DESTROYED:</span>
+                  <span class="res-val" id="res-asteroids-val">0</span>
+                </div>
+                <div class="res-row">
+                  <span class="res-label">FINAL SCORE:</span>
+                  <span class="res-val highlight-val" id="res-score-val">0</span>
+                </div>
+                <div class="res-row">
+                  <span class="res-label">MAX COMBO:</span>
+                  <span class="res-val" id="res-combo-val">x1</span>
+                </div>
+              </div>
+              <div class="game-over-actions">
+                <button type="button" class="hud-btn hud-btn-cyan" id="replay-game-btn">
+                  <span class="btn-text">🔄 PLAY AGAIN</span>
+                  <span class="btn-flare"></span>
+                </button>
+                <a href="#home" class="hud-btn hud-btn-outline" id="return-portfolio-btn">
+                  <span class="btn-text">📜 RETURN TO PORTFOLIO</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       05. DETAILED PROJECT MODAL (HUD OVERLAY)
+       ==================================================================== -->
+  <div id="project-modal" class="project-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-dialog">
+
+      <div class="modal-hud-corners">
+        <span class="mc mc-tl"></span>
+        <span class="mc mc-tr"></span>
+        <span class="mc mc-bl"></span>
+        <span class="mc mc-br"></span>
+      </div>
+
+      <!-- Close Button -->
+      <button class="modal-close-btn" id="modal-close-btn" type="button" aria-label="Close Project Modal">
+        <span class="close-label">CLOSE</span>
+        <span class="close-glyph">✕</span>
+      </button>
+
+      <!-- Dynamic Modal Content Injection Target -->
+      <div class="modal-scroll-body" id="modal-dynamic-content">
+        <!-- Rendered dynamically by script.js -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       06. TOAST NOTIFICATION HUD
+       ==================================================================== -->
+  <div id="hud-toast" class="hud-toast" aria-live="polite">
+    <span class="toast-dot"></span>
+    <span class="toast-message" id="toast-message">EMAIL COPIED TO CLIPBOARD</span>
+  </div>
+
+  <!-- ====================================================================
+       07. FOOTER
+       ==================================================================== -->
+  <footer class="hud-footer">
+    <div class="container footer-container">
+
+      <div class="footer-left">
+        <div class="footer-brand">SANJAY G.</div>
+        <p class="footer-tagline">
+          Computer Science &amp; Engineering · ACE College of Engineering · Thiruvananthapuram
+        </p>
+      </div>
+
+      <div class="footer-center">
+        <div class="footer-telemetry">
+          <span class="footer-dot"></span>
+          <span>SYSTEM RUNTIME: ONLINE</span>
+          <span class="coord-label">· 8.5241° N, 76.9366° E</span>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <a href="#home" class="back-to-top-btn" aria-label="Return to Top">
+          <span>TOP</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom-line">
+      <div class="container copyright-row">
+        <span>&copy; <span id="current-year">2026</span> Sanjay G. All rights reserved.</span>
+        <span>Engineered with HTML5, CSS3, JavaScript &amp; Three.js</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       LIBRARIES & SCRIPTS
+       ==================================================================== -->
+  <!-- Three.js for 3D Cyber Environment -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- GSAP for Smooth Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- Main Application Script -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>
